@@ -1,0 +1,80 @@
+/* .start{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.recent-cards::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  } */
+
+.posts-instructions ul li{
+    margin-bottom: 5px;
+}
+
+.user-img{
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.post-title{
+  font-size: 25px;
+}
+
+.post-left-side{
+  display: block;
+  text-wrap-mode: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.posts-right-side{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .delete-text {
+    display: none;
+  }
+
+  .delete-btn {
+    padding: 8px; /* Reduce padding for icon-only */
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .delete-text {
+    display: inline;
+  }
+}
+
+
+/* Add this to your CSS file for responsive tweaks */
+@media (max-width: 576px) {
+    .post-title{
+      font-size: 14px;
+    }
+
+    .posts-right-side-texts{
+      font-size: 12px;
+    }
+
+    .posts-right-side{
+      display: flex;
+      align-items: center;
+      gap: 0rem;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    #posts-status{
+        font-size: 0.8rem;
+    }
+}
+  

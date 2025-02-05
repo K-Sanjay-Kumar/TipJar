@@ -1,0 +1,204 @@
+  /* Global Styles */
+body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .not-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+
+  .recent-post-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .recent-updates {
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .scroll-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .scroll-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 4px;
+  }
+  
+  .scroll-btn:hover {
+    background-color: #555;
+  }
+
+  /* For Webkit-based browsers (Chrome, Safari, Edge) */
+  .recent-cards::-webkit-scrollbar {
+    width: 8px; /* Horizontal scrollbar width */
+    height: 8px; /* Vertical scrollbar height */
+  }
+  
+  
+  .recent-cards {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+  }
+  
+  .recent-card {
+    background-color: white;
+    padding: 15px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .explore-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Title and Controls */
+  .explore-controls {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .search-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 75%;
+  }
+  
+  .explore-search {
+    padding: 10px;
+    padding-left: 30px; /* To make space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #1c1c1c;
+    color: white;
+  }
+  
+  .explore-search::placeholder {
+    color: #888;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px; /* Adjust to fit nicely inside the input */
+    font-size: 18px;
+    color: #888;
+  }
+  
+  
+  /* Card Layout */
+  .explore-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .explore-card {
+    background-color: #1c1c1c;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.4s, transform 0.3s;
+    color: white;
+  }
+  
+  .explore-card:hover {
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.7), 0 0 30px rgba(0, 191, 255, 0.5);
+    transform: translateY(-5px);
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+
+  .recent-post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .card-description {
+    font-size: 14px;
+    color: #bbbbbb;
+    margin-bottom: 10px;
+  }
+
+  .recent-post-description {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  .card-author{
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .card-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  .read-full-button {
+    background-color: #00acee;
+    color: black;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .read-full-button:hover {
+    background-color: #007bbf;
+    box-shadow: 0 0 10px #007bbf;
+  }
+  
+  /* No Results Message */
+  .no-results {
+    text-align: center;
+    color: #ff6961;
+    font-size: 16px;
+  }
+  
