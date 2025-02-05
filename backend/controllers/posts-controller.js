@@ -84,8 +84,29 @@ export const getPostsById = async (req, res) => {
 };
 
 
+// export const likePost = async (req, res) => {
+//     const { id, token } = req.body;
+  
+//     try {
+//       const post = await Posts.findById(id);
+  
+//       if (!post) {
+//         return res.status(404).json({ success: false, message: "Post not found" });
+//       }
+  
+//       post.likes += 1;
+//       await post.save();
+  
+//       res.json({ success: true, likes: post.likes });
+//     } catch (error) {
+//       res.status(500).json({ success: false, message: error.message });
+//     }
+// };
+
+
+
 export const likePost = async (req, res) => {
-    const { id } = req.body;
+    const { id, token } = req.body;
   
     try {
       const post = await Posts.findById(id);
@@ -94,14 +115,22 @@ export const likePost = async (req, res) => {
         return res.status(404).json({ success: false, message: "Post not found" });
       }
   
+      // Check if the user has already liked this post
+      if (post.likedBy.includes(token)) {
+        return res.status(400).json({ success: false, message: "You have already liked this post." });
+      }
+  
+      // Update likes and add user to likedBy array
       post.likes += 1;
+      post.likedBy.push(token);
       await post.save();
   
       res.json({ success: true, likes: post.likes });
     } catch (error) {
       res.status(500).json({ success: false, message: error.message });
     }
-};
+  };
+  
 
 export const PostViews = async (req, res) =>{
     const { id } = req.body;
