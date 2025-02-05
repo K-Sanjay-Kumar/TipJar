@@ -18,6 +18,7 @@ function Details() {
   const [post, setPost] = useState(null);
   const [likes, setLikes] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [liked, setLiked] = useState(false); // Track user's like status
 
   useEffect(() => {
     const fetchPostDetails = async () => {
@@ -25,6 +26,7 @@ function Details() {
         const response = await axios.get(`/api/posts/details/${id}`);
         setPost(response.data.data);
         setLikes(response.data.data.likes);
+        setLiked(response.data.data.likedByUser);
       } catch (error) {
         console.error("Error fetching post details:", error);
       } finally {
@@ -37,9 +39,10 @@ function Details() {
 
   const handleLike = async () => {
     try {
-      const response = await axios.post(`/api/posts/like`, { id });
+      const response = await axios.post(`/api/posts/like`, { id, token });
       if (response.data.success) {
         setLikes(response.data.likes);
+        setLiked(true);
       }
     } catch (error) {
       console.error("Error updating like count:", error);
@@ -72,8 +75,9 @@ function Details() {
                 </span>
                 <span>Views: {post.views}</span>
               </div>
-              <button onClick={handleLike} className="like-button mt-3">
-                ❤️ Like ({likes})
+
+              <button onClick={handleLike} className="like-button mt-3" disabled={liked}>
+                ❤️ Like ({likes}) {liked ? "(Liked)" : ""}
               </button>
             </div>
           )
