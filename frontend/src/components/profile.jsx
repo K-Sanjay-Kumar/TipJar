@@ -339,7 +339,7 @@ function Profile() {
                   {/* Create Post
                   {loading && <span className="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>} */}
                   {loading ? 
-                    <AiOutlineLoading3Quarters className="animate-spin" />: 'Create Post'
+                    <AiOutlineLoading3Quarters className="animate-spin"/>: 'Create Post'
                   }
                 </Button>
               </Form>
