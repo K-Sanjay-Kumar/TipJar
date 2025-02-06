@@ -12,6 +12,10 @@
     margin-bottom: 5px;
 }
 
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
 .user-img{
   width: 180px;
   height: 180px;
@@ -40,14 +44,23 @@
   .delete-text {
     display: none;
   }
+  .pending-text{
+    display: none;
+  }
 
   .delete-btn {
     padding: 8px; /* Reduce padding for icon-only */
+  }
+  .pending-btn{
+    padding: 8px;
   }
 }
 
 @media only screen and (min-width: 769px) {
   .delete-text {
+    display: inline;
+  }
+  .pending-text{
     display: inline;
   }
 }

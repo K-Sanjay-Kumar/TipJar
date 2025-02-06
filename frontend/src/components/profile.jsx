@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
 import { MdDeleteOutline } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function Profile() {
 
@@ -41,6 +42,7 @@ function Profile() {
   const handleUpdateClose = () => setShowUpdate(false);
   const handleShow = () => setShowModal(true);
   const handleUpdate = () => setShowUpdate(true);
+  const [loading, setLoading]=useState(false);
 
   // Handle change in post form data
   const handleChange = (e) => {
@@ -49,6 +51,7 @@ function Profile() {
 
   // Creating the post
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const { token, author, title, description, status, image } = formData;
 
@@ -68,6 +71,7 @@ function Profile() {
       });
 
       if (response.data.success) {
+        setLoading(false);
         alert("Post created successfully");
 
         // Update user state and local storage
@@ -78,6 +82,7 @@ function Profile() {
         // Fetch updated posts list
         fetchPosts();
         handleClose();
+        setFormData({token: token, author: author, title: "", description: "", status: "pending", image: ""});
       }
     } catch (error) {
       console.error(error);
@@ -243,8 +248,9 @@ function Profile() {
               {/* Status Handling */}
               <div className="d-flex align-items-center gap-3">
                 {post.status === "pending" && (
-                  <div className="text-warning" style={{ backgroundColor: 'black', padding: '8px 13px', borderRadius: '15px', cursor: "default" }}>
-                    <FaRegClock className="me-1" /> Pending
+                  <div className="text-warning pending-btn" style={{ backgroundColor: 'black', padding: '8px 13px', borderRadius: '15px', cursor: "default" }}>
+                    <FaRegClock className="me-1" />
+                    <span className="pending-text">Pending</span>
                   </div>
                 )}
 
@@ -329,7 +335,13 @@ function Profile() {
                   />
                 </Form.Group>
 
-                <Button type="submit" variant="primary">Create Post</Button>
+                <Button type="submit" variant="primary">
+                  {/* Create Post
+                  {loading && <span className="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>} */}
+                  {loading ? 
+                    <AiOutlineLoading3Quarters className="animate-spin" />: 'Create Post'
+                  }
+                </Button>
               </Form>
             </Modal.Body>
           </Modal>
